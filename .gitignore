@@ -5,3 +5,6 @@ __pycache__/
 # Sphinx: caché interna (la documentación generada sí se versiona)
 .doctrees/
 doctrees/
+
+# Node.js: dependencias (se reinstalan con npm install)
+node_modules/
