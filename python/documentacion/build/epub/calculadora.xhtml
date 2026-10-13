@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo calculadora</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="module-calculadora">
+<span id="modulo-calculadora"></span><h1>Módulo calculadora</h1>
+<p>Calculadora de precios.</p>
+<p>Módulo que permite calcular un precio con IVA, aplicar un descuento y
+obtener el precio final aplicando descuento e IVA.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="calculadora.IVA_GENERAL">
+<span class="sig-prename descclassname"><span class="pre">calculadora.</span></span><span class="sig-name descname"><span class="pre">IVA_GENERAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21.0</span></span></dt>
+<dd><p>Porcentaje de IVA general que se aplica por defecto.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calculadora.aplicar_descuento">
+<span class="sig-prename descclassname"><span class="pre">calculadora.</span></span><span class="sig-name descname"><span class="pre">aplicar_descuento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descuento</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Aplica un porcentaje de descuento a un precio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>precio</strong> (<em>float</em>) – Precio original. Debe ser mayor o igual que 0.</p></li>
+<li><p><strong>descuento</strong> (<em>float</em>) – Porcentaje de descuento, entre 0 y 100.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Precio con el descuento aplicado, redondeado a dos decimales.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Si el precio es negativo o el descuento no está
+entre 0 y 100.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calculadora.calcular_con_iva">
+<span class="sig-prename descclassname"><span class="pre">calculadora.</span></span><span class="sig-name descname"><span class="pre">calcular_con_iva</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iva</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calcula el precio con IVA incluido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>precio</strong> (<em>float</em>) – Precio base sin IVA. Debe ser mayor o igual que 0.</p></li>
+<li><p><strong>iva</strong> (<em>float</em>) – Porcentaje de IVA a aplicar (por defecto 21).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Precio con IVA, redondeado a dos decimales.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Si el precio o el IVA son negativos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calculadora.calcular_precio_final">
+<span class="sig-prename descclassname"><span class="pre">calculadora.</span></span><span class="sig-name descname"><span class="pre">calcular_precio_final</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descuento</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iva</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calcula el precio final aplicando primero el descuento y después el IVA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>precio</strong> (<em>float</em>) – Precio base sin IVA.</p></li>
+<li><p><strong>descuento</strong> (<em>float</em>) – Porcentaje de descuento, entre 0 y 100.</p></li>
+<li><p><strong>iva</strong> (<em>float</em>) – Porcentaje de IVA a aplicar (por defecto 21).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Precio final con descuento e IVA, redondeado a dos decimales.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Si algún valor no es válido.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calculadora.main">
+<span class="sig-prename descclassname"><span class="pre">calculadora.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Pide un precio y un descuento y muestra los tres cálculos.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
