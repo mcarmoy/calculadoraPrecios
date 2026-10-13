@@ -8,3 +8,6 @@ doctrees/
 
 # Node.js: dependencias (se reinstalan con npm install)
 node_modules/
+
+# PHP: phpDocumentor (caché interna; se puede regenerar)
+.phpdoc/
