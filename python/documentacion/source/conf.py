@@ -15,6 +15,7 @@ project = 'Calculadora de precios'
 copyright = '2026, Tu Nombre'
 author = 'Tu Nombre'
 release = '1.0'
+version = "1.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
