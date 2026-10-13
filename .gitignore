@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.pyc
+
+# Sphinx: caché interna (la documentación generada sí se versiona)
+.doctrees/
+doctrees/
