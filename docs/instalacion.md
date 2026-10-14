@@ -12,7 +12,7 @@
 ## Descarga
 
 `````bash
-git clone <URL-del-repositorio>
+git clone https://github.com/mcarmoy/calculadoraPrecios.git
 cd calculadoraPrecios
 `````
 
