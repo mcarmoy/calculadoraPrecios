@@ -16,6 +16,15 @@ Programa que calcula un precio con IVA, aplica un descuento y obtiene el precio 
 calculadoraPrecios/
 ├── README.md
 ├── .gitignore
+├── .github/
+│   ├── actions/
+│   │   ├── docs-python/action.yml
+│   │   ├── docs-javascript/action.yml
+│   │   └── docs-php/action.yml
+│   └── workflows/
+│       └── documentacion.yml
+├── pages/
+│   └── index.html
 ├── docs/
 │   ├── instalacion.md
 │   ├── uso.md
@@ -26,11 +35,9 @@ calculadoraPrecios/
 ├── javascript/
 │   ├── calculadora.js
 │   ├── package.json
-│   ├── package-lock.json
-│   └── documentacion/
+│   └── package-lock.json
 └── php/
-    ├── calculadora.php
-    └── documentacion/
+    └── calculadora.php
 `````
 
 ## Ejecución rápida
@@ -49,8 +56,15 @@ php php/calculadora.php 100 10
 - [Uso](docs/uso.md): cómo ejecutar cada versión, con ejemplos.
 - [Formatos](docs/formatos.md): cómo regenerar la documentación técnica y qué formatos se obtienen.
 
-La documentación técnica generada está en las carpetas `documentacion/` de cada lenguaje.
+## Documentación técnica automática
+
+La documentación técnica se genera automáticamente con GitHub Actions a partir de los comentarios del código, por lo que no se versiona en el repositorio:
+
+- En cada Pull Request hacia `main` se genera para comprobar que funciona.
+- En cada cambio que llega a `main` se genera y se publica en GitHub Pages: https://mcarmoy.github.io/calculadoraPrecios/
+
+Cada lenguaje tiene su propia acción local en `.github/actions/`, y el workflow `.github/workflows/documentacion.yml` las ejecuta en paralelo. Los formatos generados también se pueden descargar como artefactos desde la pestaña **Actions**.
 
 ## Control de versiones
 
-El proyecto se gestiona con Git. El `.gitignore` excluye los archivos temporales y las dependencias, que se pueden volver a generar.
+El proyecto se gestiona con Git. El `.gitignore` excluye los archivos temporales, las dependencias y la documentación generada, que se pueden volver a generar.
