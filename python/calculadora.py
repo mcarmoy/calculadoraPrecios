@@ -2,6 +2,8 @@
 
 Módulo que permite calcular un precio con IVA, aplicar un descuento y
 obtener el precio final aplicando descuento e IVA.
+
+Por defecto se aplica el IVA general del 21 %.
 """
 
 IVA_GENERAL = 21.0
