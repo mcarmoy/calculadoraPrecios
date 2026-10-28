@@ -1,0 +1,19 @@
+name: Documentacion PHP (phpDocumentor)
+description: Genera la documentacion de la version en PHP con phpDocumentor en HTML y XML
+runs:
+  using: composite
+  steps:
+    - name: Preparar PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+
+    - name: Descargar phpDocumentor
+      shell: bash
+      run: curl -sSL -o "$RUNNER_TEMP/phpDocumentor.phar" https://github.com/phpDocumentor/phpDocumentor/releases/latest/download/phpDocumentor.phar
+
+    - name: Generar la documentacion
+      shell: bash
+      run: |
+        php "$RUNNER_TEMP/phpDocumentor.phar" run -d php -t php/documentacion/html
+        php "$RUNNER_TEMP/phpDocumentor.phar" run -d php -t php/documentacion/xml --template=xml

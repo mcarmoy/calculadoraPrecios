@@ -1,0 +1,90 @@
+name: Documentacion automatica
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  python:
+    name: Python (Sphinx)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v7
+
+      - name: Generar documentacion
+        uses: ./.github/actions/docs-python
+
+      - name: Guardar documentacion
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-python
+          path: python/documentacion/build
+
+  javascript:
+    name: JavaScript (JSDoc)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v7
+
+      - name: Generar documentacion
+        uses: ./.github/actions/docs-javascript
+
+      - name: Guardar documentacion
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-javascript
+          path: javascript/documentacion
+
+  php:
+    name: PHP (phpDocumentor)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v7
+
+      - name: Generar documentacion
+        uses: ./.github/actions/docs-php
+
+      - name: Guardar documentacion
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-php
+          path: php/documentacion
+
+  publicar:
+    name: Publicar en GitHub Pages
+    needs: [python, javascript, php]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v7
+
+      - name: Descargar la documentacion generada
+        uses: actions/download-artifact@v7
+        with:
+          pattern: docs-*
+          path: sitio
+
+      - name: Anadir la portada
+        run: cp pages/index.html sitio/index.html
+
+      - name: Subir el sitio
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: sitio
+
+      - name: Desplegar en GitHub Pages
+        id: despliegue
+        uses: actions/deploy-pages@v5

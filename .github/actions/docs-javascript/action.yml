@@ -1,0 +1,22 @@
+name: Documentacion JavaScript (JSDoc)
+description: Genera la documentacion de la version en JavaScript con JSDoc en HTML y JSON
+runs:
+  using: composite
+  steps:
+    - name: Preparar Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: '24'
+
+    - name: Instalar JSDoc
+      shell: bash
+      working-directory: javascript
+      run: npm ci
+
+    - name: Generar la documentacion
+      shell: bash
+      working-directory: javascript
+      run: |
+        mkdir -p documentacion
+        npx jsdoc calculadora.js -d documentacion/html
+        npx jsdoc -X calculadora.js > documentacion/doclets.json

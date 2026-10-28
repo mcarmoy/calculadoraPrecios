@@ -1,0 +1,22 @@
+name: Documentacion Python (Sphinx)
+description: Genera la documentacion de la version en Python con Sphinx en HTML, texto, EPUB y LaTeX
+runs:
+  using: composite
+  steps:
+    - name: Preparar Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+
+    - name: Instalar Sphinx
+      shell: bash
+      run: python -m pip install sphinx
+
+    - name: Generar la documentacion
+      shell: bash
+      working-directory: python/documentacion
+      run: |
+        for formato in html text epub latex; do
+          echo "Generando formato: $formato"
+          python -m sphinx -b "$formato" -d "$RUNNER_TEMP/doctrees" source "build/$formato"
+        done

@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 
-# Sphinx: caché interna (la documentación generada sí se versiona)
+# Sphinx: caché interna
 .doctrees/
 doctrees/
 
@@ -11,3 +11,8 @@ node_modules/
 
 # PHP: phpDocumentor (caché interna; se puede regenerar)
 .phpdoc/
+
+# Documentación generada: la crea GitHub Actions automáticamente
+python/documentacion/build/
+javascript/documentacion/
+php/documentacion/

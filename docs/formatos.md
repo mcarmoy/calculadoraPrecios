@@ -1,5 +1,17 @@
 # Formatos de la documentación
 
+## Generación automática
+
+La documentación se genera con GitHub Actions mediante el workflow `.github/workflows/documentacion.yml`, que llama a una acción local por lenguaje:
+
+| Lenguaje | Acción local | Artefacto |
+|----------|--------------|-----------|
+| Python | `.github/actions/docs-python` | `docs-python` |
+| JavaScript | `.github/actions/docs-javascript` | `docs-javascript` |
+| PHP | `.github/actions/docs-php` | `docs-php` |
+
+Los formatos se pueden descargar como artefactos de cada ejecución y se publican en GitHub Pages: https://mcarmoy.github.io/calculadoraPrecios/
+
 La documentación técnica se genera automáticamente a partir de los comentarios del código. Cada herramienta ofrece varios formatos de salida, con finalidades distintas.
 
 ## Formatos generados
@@ -15,7 +27,7 @@ La documentación técnica se genera automáticamente a partir de los comentario
 | PHP | phpDocumentor | HTML | `php/documentacion/html` | Consulta en el navegador |
 | PHP | phpDocumentor | XML | `php/documentacion/xml` | Datos estructurados |
 
-## Cómo regenerarla
+## Cómo generarla en local (opcional)
 
 **Python (Sphinx)**
 
